@@ -1,0 +1,189 @@
+@import url('https://fonts.googleapis.com/css2?family=Elms+Sans:ital,wght@0,100..900;1,100..900&family=Marcellus&display=swap');
+
+/* === VARIABLES === */
+:root {
+    --base-color: #ECECEC;
+    --text-color: #000000;
+    --primary-color: #000;
+    --secondary-color: #8D8DFF;
+}
+
+/* === GLOBAL RESET === */
+* { 
+    box-sizing: border-box; 
+    margin: 0; 
+    padding: 0; 
+}
+
+/* === BODY === */
+body {
+    font-family: 'Elms Sans', sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+    line-height: 1.4;
+    background: var(--base-color);
+    min-height: 100vh;
+}
+
+/* === INTRO SCREEN === */
+.intro {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: var(--base-color);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+  opacity: 1;
+  transition: opacity 1s ease, transform 1.2s ease;
+}
+
+.intro-name {
+  color: var(--primary-color);
+  font-size: 2.5rem;
+  font-weight: 500;
+  letter-spacing: -0.04em;
+  animation: textIn 2s ease forwards;
+}
+
+/* INTRO ANIMATION */
+@keyframes textIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px) scale(.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(20px) scale(.95);
+  }
+}
+
+/* HIDDEN INTRO */
+.intro.hide {
+  opacity: 0;
+  transform: scale(0.98);
+  pointer-events: none;
+}
+
+/* === FRAME === */
+.frame {
+  display: flex;
+  position: fixed;
+  width: calc(100% - 4rem); /* 1.5rem margin on left + right */
+  height: calc(100% - 4rem); /* 1.5rem margin top + bottom */
+  margin: 2rem;  
+  border: .4px solid var(--primary-color);
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  overflow: hidden;
+  box-shadow: 0 0 0 transparent;
+  transition: box-shadow 0.8s ease;
+  animation: fadeInFrame 1.5s ease forwards;
+}
+
+#three-container {
+  position: absolute;
+  inset: 0;            /* top:0; right:0; bottom:0; left:0; */
+  z-index: 1;          /* keep behind text (text should have z-index >1) */
+  pointer-events: none;/* let clicks pass through */
+}
+
+.siteHeader {
+  position: absolute;
+  line-height: 1.2;
+  bottom: 1.5rem;
+  right: 1.5rem;
+  z-index: 5;
+}
+
+.intro-text {
+  position: absolute;
+  line-height: 1;
+  top: 2rem;
+  left: 2rem;
+  color: var(--primary-color);
+  font-size: 1rem;
+}
+
+/* === TYPOGRAPHY === */
+
+p { 
+    max-width: 400px;
+    line-height: 1.4;
+    text-align: left;
+}
+
+h1, h2, h3 {
+    color: var(--primary-color);  
+    margin: .2rem;
+    letter-spacing: -.2em;
+}
+
+.name {
+  color: var(--primary-color);
+  font-size: 3.5rem;
+  font-weight: 150;
+  letter-spacing: -0.02em;
+}
+
+.role {
+  color: var(--primary-color);
+  font-size: 1.1rem;
+  font-weight: 100;
+  letter-spacing: -0.01em;
+}
+
+canvas { display: block; }
+
+/* === FOOTER === */
+.siteFooter {
+  font-family: 'Elms Sans', sans-serif;
+  color: var(--text-color);
+  position: fixed;       /* relative to the body */
+  bottom: .7rem; /* slightly below the frame */
+  left: 2.3rem;             /* aligns with frame's left margin */
+  font-size: 0.7rem;
+}
+
+/* === ANIMATIONS === */
+@keyframes fadeInFrame {
+  from {
+    opacity: 0;
+    transform: scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes fadeInContent {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* === RESPONSIVE === */
+@media (max-width: 960px) {
+  .frame {
+    padding: 1rem;
+    min-height: 95vh;
+  }
+
+  .name {
+    font-size: 2rem;
+  }
+}
